@@ -1,6 +1,7 @@
 package io.github.w3code.tests;
 
 import io.appium.java_client.MobileBy;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -8,9 +9,11 @@ import static com.codeborne.selenide.Selectors.byClassName;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
+@DisplayName("Aviasales mobile app test")
 public class flightSearchTests extends TestBase {
 
     @Test
+    @DisplayName("Search ticket test")
     void ticketSearchTest() {
         step("Taping the Skip button", () ->
                 $(byClassName("android.widget.TextView")).click());
