@@ -37,6 +37,7 @@ public class flightSearchTests extends TestBase {
                 $(MobileBy.id("ru.aviasales:id/btnApply")).click());
 
         step("Checking is cheapest offer exist", () ->
-                $(MobileBy.id("ru.aviasales:id/cheapestOfferView")).should(exist));
+                $(MobileBy.id("ru.aviasales:id/contentRecycler")).
+                        $(MobileBy.id("ru.aviasales:id/cheapestOfferView")).should(exist));
     }
 }
