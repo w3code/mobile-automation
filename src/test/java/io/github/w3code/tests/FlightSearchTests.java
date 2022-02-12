@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 @DisplayName("Aviasales mobile app test")
-public class flightSearchTests extends TestBase {
+public class FlightSearchTests extends TestBase {
 
     @Test
     @DisplayName("Search ticket test")
