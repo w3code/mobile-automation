@@ -1,11 +1,10 @@
-package io.github.w3code.tests;
+package io.github.w3code.browserstack;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import io.github.w3code.config.BrowserstackConfig;
 import io.github.w3code.config.CitiesConfig;
-import io.github.w3code.helpers.Attach;
 import io.github.w3code.drivers.BrowserstackMobileDriver;
+import io.github.w3code.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -16,7 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static io.github.w3code.helpers.Attach.getSessionId;
 
-public class TestBase {
+public class BrowserstackTestBase {
     public static CitiesConfig cities = ConfigFactory.create(CitiesConfig.class, System.getProperties());
 
     @BeforeAll

@@ -15,7 +15,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL(browserstack.browserstackHubUrl());
+            return new URL(browserstack.hubUrl());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -24,20 +24,20 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
     @Override
     public WebDriver createDriver(DesiredCapabilities desiredCapabilities) {
         // Set your access credentials
-        desiredCapabilities.setCapability("browserstack.user", browserstack.browserstackUser());
-        desiredCapabilities.setCapability("browserstack.key", browserstack.browserstackKey());
+        desiredCapabilities.setCapability("browserstack.user", browserstack.user());
+        desiredCapabilities.setCapability("browserstack.key", browserstack.key());
 
         // Set URL of the application under test
-        desiredCapabilities.setCapability("app", browserstack.browserstackApp());
+        desiredCapabilities.setCapability("app", browserstack.app());
 
         // Specify device and os_version for testing
-        desiredCapabilities.setCapability("device", browserstack.browserstackDevice());
-        desiredCapabilities.setCapability("os_version", browserstack.browserstackOsVersion());
+        desiredCapabilities.setCapability("device", browserstack.device());
+        desiredCapabilities.setCapability("os_version", browserstack.osVersion());
 
         // Set other BrowserStack capabilities
-        desiredCapabilities.setCapability("project", browserstack.browserstackProject());
-        desiredCapabilities.setCapability("build", browserstack.browserstackBuild());
-        desiredCapabilities.setCapability("name", browserstack.browserstackName());
+        desiredCapabilities.setCapability("project", browserstack.project());
+        desiredCapabilities.setCapability("build", browserstack.build());
+        desiredCapabilities.setCapability("name", browserstack.name());
 
         // Initialise the remote Webdriver using BrowserStack remote URL
         // and desired capabilities defined above

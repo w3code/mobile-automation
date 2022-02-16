@@ -6,9 +6,9 @@ import static io.restassured.RestAssured.given;
 public class Browserstack {
     public static String videoUrl(String sessionId) {
         return given()
-                .auth().basic(browserstack.browserstackUser(), browserstack.browserstackKey())
+                .auth().basic(browserstack.user(), browserstack.key())
                 .when()
-                .get(browserstack.browserstackApiUrl() + sessionId + ".json")
+                .get(browserstack.apiUrl() + sessionId + ".json")
                 .then()
                 .statusCode(200)
                 .log().body()

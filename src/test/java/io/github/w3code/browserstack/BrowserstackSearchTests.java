@@ -1,7 +1,9 @@
-package io.github.w3code.tests;
+package io.github.w3code.browserstack;
 
+import com.codeborne.selenide.Selenide;
 import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.exist;
@@ -10,7 +12,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
 @DisplayName("Aviasales mobile app test")
-public class FlightSearchTests extends TestBase {
+@Tag("Browserstack")
+public class BrowserstackSearchTests extends BrowserstackTestBase {
 
     @Test
     @DisplayName("Search ticket test")
@@ -21,13 +24,14 @@ public class FlightSearchTests extends TestBase {
         step("Entering the departure city", () -> {
             $(MobileBy.id("ru.aviasales:id/searchFrom")).click();
             $(MobileBy.id("ru.aviasales:id/editTextMessage")).sendKeys(cities.departureCity());
-            $(MobileBy.id("ru.aviasales:id/searchToButtonView")).click();
+            Selenide.sleep(1000);
+            $(MobileBy.id("ru.aviasales:id/tvAirportName")).click();
         });
 
         step("Entering the arrival city", () -> {
             $(MobileBy.id("ru.aviasales:id/searchTo")).click();
             $(MobileBy.id("ru.aviasales:id/editTextMessage")).sendKeys(cities.arrivalCity());
-            $(MobileBy.id("ru.aviasales:id/searchToButtonView")).click();
+            $(MobileBy.id("ru.aviasales:id/tvAirportName")).click();
         });
 
         step("Taping the Date button", () ->
@@ -39,7 +43,7 @@ public class FlightSearchTests extends TestBase {
         step("Taping the Apply button", () ->
                 $(MobileBy.id("ru.aviasales:id/btnApply")).click());
 
-        step("Checking is cheapest offer exist", () ->
+        step("Checking is offer exist", () ->
                 $(MobileBy.id("ru.aviasales:id/contentRecycler")).
                         $(MobileBy.id("ru.aviasales:id/cheapestOfferView")).should(exist));
     }
